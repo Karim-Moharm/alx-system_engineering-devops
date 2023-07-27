@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# display content of working dir files
+
+for i in *
+do
+    echo $i
+done
