@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+# display content of the file /etc/passwd
+
+file = "/etc/passwd"
+while read p; do
+	echo "$p"
+done < "$file"
