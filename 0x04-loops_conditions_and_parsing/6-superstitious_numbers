@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# displaying numbers from 1 to 20 with somw special cases like 4, 9 and 17
+# displaying numbers from 1 to 20 with some special output in case 4, 9 and 17
 
 i=1
 while [ $i -le 20 ]
