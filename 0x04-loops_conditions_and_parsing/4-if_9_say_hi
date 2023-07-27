@@ -2,9 +2,9 @@
 # print Best School 10 times and hi in 9th line
 
 i=0
-while [ $i -le 9 ]
+while [ $i -le 10 ]
 do
-	if [ $i -ne 8 ]; then
+	if [ $i -ne 9 ]; then
 		echo "Best School"
 	else
 		echo "Hi"
