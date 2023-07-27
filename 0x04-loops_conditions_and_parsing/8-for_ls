@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # display content of working dir files
 
-for i in *
+for file in *
 do
-    echo $i
+    echo $file | cut -d "-" -f 2 
 done
