@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# script used to kill another script
+
+script_pid=fuser 4-to_infinity_and_beyond
+kill $script_pid
