@@ -2,6 +2,6 @@
 # display content of the file /etc/passwd
 
 file="/etc/passwd"
-while read -r p; do
-	echo "$p" | cut -d ":" -f 1,3,6
+while read -r row; do
+	echo "$row" | cut -d ":" -f 1,3,6
 done < "$file"
