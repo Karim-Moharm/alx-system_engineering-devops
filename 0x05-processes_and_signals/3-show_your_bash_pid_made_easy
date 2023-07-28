@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # display the bash PID and the PID of current process
 
-pgrep bash
-echo $$ bash
+pgrep '^bash$' -l
