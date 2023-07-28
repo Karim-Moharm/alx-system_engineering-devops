@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# parsing IP and HTTP Codes for visitors
+
+awk '{print $1 " " $9}' apache-access.log | sort -r
