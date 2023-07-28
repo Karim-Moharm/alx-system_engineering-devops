@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # script that display the visitors IP HTTP_CODE
 
-awk '{print $1}'  apache-access.log
+awk '{print $1 " " $9}'  apache-access.log
