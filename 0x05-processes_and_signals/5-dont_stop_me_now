@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # script used to kill another script
 
-script_pid=fuser 4-to_infinity_and_beyond
+script_pid=lsof "./4-to_infinity_and_beyond"
 kill $script_pid
