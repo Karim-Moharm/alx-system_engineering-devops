@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # create rsa ssh pair key
 
-Username="ubuntu"
 passphrase="betty"
 name="school"
 
-ssh-keygen -t rsa -b 4096 -C $username -f $name -P $passphrase
+ssh-keygen -t rsa -b 4096 -f $name -N $passphrase
