@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Install nginx on your web-01
 
-sudo apt -y update
-sudo apt -y install nginx
+apt-get -y update
+apt-get -y install nginx
 # Adjust firewall
-sudo ufm allow 'Nginx HTTP'
-sudo echo "Hello World!" > /var/www/html/index.html
-sudo service nginx start
+ufm allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+service nginx start
