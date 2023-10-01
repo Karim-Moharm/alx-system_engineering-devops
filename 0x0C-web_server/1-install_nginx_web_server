@@ -5,5 +5,5 @@ sudo apt -y update
 sudo apt -y install nginx
 # Adjust firewall
 sudo ufm allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
+sudo echo "Hello World!" > /var/www/html/index.html
 sudo service nginx start
