@@ -1,10 +1,29 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains a custom header
-# (on web-01 and web-02)
+# (on web-01 and web-02) 
 # shellcheck disable=SC2154
+
+url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+# creating file for error
+touch /var/www/html/error_404.html
+
 
 sudo apt-get update
 sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
+sudo echo "Hello World!" | sudo tee /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/error_404.html
 
+sudo echo "server {
+		listen 80 default_server;
+		listen [::]:80 default_server;
+		root /var/www/html;
+		index index.html index.htm index.nginx-debian.html;
+
+		location /redirect_me {
+			return 301 $url;
+		}
+	}
+" | sudo tee /etc/nginx/sites-available/default
+
+sudo service nginx restart
