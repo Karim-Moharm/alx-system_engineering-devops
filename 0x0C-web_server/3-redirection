@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# script used to redirect to another page
+
+# sudo apt-get update
+sudo apt-get install nginx -y
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+
+echo "
+	server {
+		listen 80;
+		root   /etc/nginx/html;
+    	index  index.html index.htm index.nginx-debian.html;
+		
+		location /redirect_me {
+			return 301  https://www.youtube.com/watch?v=QH2-TGUlwu4;
+		}
+	}
+" | sudo tee /etc/nginx/sites-available/default
+
+sudo systemctl reload nginx
