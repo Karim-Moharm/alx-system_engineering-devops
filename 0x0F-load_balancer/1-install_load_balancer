@@ -21,8 +21,8 @@ echo "
 	backend mybackEnd
 		balance roundrobin
 		timeout connect 10s
-		timeout server 50s
-		
+		timeout server 50s	
+		mode http
 		server web-01 54.210.89.123:80 check
 		server web-02 54.210.89.123:80 check
 " >> /etc/haproxy/haproxy.cfg
