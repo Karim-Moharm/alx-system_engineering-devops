@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
-# script used to redirect to another page
+# Configure Nginx so that its HTTP response contains a custom header
+# (on web-01 and web-02)
 
-# sudo apt-get update
+url = "https://www.youtube.com/watch?v=QH2-TGUlwu4"
+
+sudo apt-get update
 sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.html
 
-echo "
-	server {
+echo "server {
 		listen 80 default_server;
 		listen [::]:80 default_server;
-		
-		# location /redirect_me {
-		#	return 301  https://www.youtube.com/watch?v=QH2-TGUlwu4;
-		# }
+		root /var/www/html;
+		index index.html index.htm index.nginx-debian.html;
 
-		rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanet;
+		location /redirect_me {
+			return 301 $url;
+		}
 	}
 " | sudo tee /etc/nginx/sites-available/default
 
-sudo systemctl reload nginx
+service nginx restart
