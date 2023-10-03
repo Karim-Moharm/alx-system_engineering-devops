@@ -7,7 +7,7 @@ sudo add-apt-repository ppa:vbernat/haproxy-2.4 -y
 sudo apt install haproxy=2.4.\*
 
 # configuring
-echo 'ENABLED=1' >> /etc/default/haproxy
+echo 'ENABLED=1' | sudo tee -a /etc/default/haproxy
 
 # copy the default configuration file to backup file
 cp /etc/haproxy/haproxy.cfg /etc/haproxy/original.cfg
@@ -24,6 +24,6 @@ backend mybackEnd
 	timeout server 50s	
 	server web-01 54.210.89.123:80 check
 	server web-02 54.210.89.123:80 check
-	" >> /etc/haproxy/haproxy.cfg
+	" | sudo tee -a /etc/haproxy/haproxy.cfg
 
 service haproxy start
