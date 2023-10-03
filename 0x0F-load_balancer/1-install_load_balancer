@@ -15,15 +15,17 @@ cp /etc/haproxy/haproxy.cfg /etc/haproxy/original.cfg
 echo "
 frontend myfrontEnd
 	bind *:80
+	mode http
 	timeout client 40s
 	default_backend mybackEnd
 
 backend mybackEnd
 	balance roundrobin
+	mode http
 	timeout connect 10s
 	timeout server 50s	
-	server web-01 54.210.89.123:80 check
-	server web-02 54.210.89.123:80 check
+	server 374555-web-01 54.210.89.123:80 check
+	server 374555-web-02 54.210.89.123:80 check
 	" | sudo tee -a /etc/haproxy/haproxy.cfg
 
 service haproxy start
