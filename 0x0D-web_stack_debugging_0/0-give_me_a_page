@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# run apache on the container and return Hello Holberton
+
+sudo service apache2 restart
