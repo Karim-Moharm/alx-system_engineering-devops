@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# script to configure the domain zone
+# shellcheck disable=SC2086
+
+FULLDOMAIN=$1
+if [ $# -eq 2 ]; then
+    FULLDOMAIN="$2.$1"
+fi
+
+dig_info=$(dig "$FULLDOMAIN")
+answer_section=$(echo "$dig_info" | grep -A1 'ANSWER SECTION:')
+
+
+# awk information
+SUB_DOMAIN=$(echo "$answer_section" | awk 'NR==2' | awk -F'.' '{print $1}';)
+RECORD_TYPE=$(echo "$answer_section" | awk 'NR==2' | awk '{print $4}';)
+DESTINATION=$(echo "$answer_section" | awk 'NR==2' | awk '{print $5}';)
+
+
+print_info() {
+    echo "The subdomain $SUB_DOMAIN is a $RECORD_TYPE record and points to $DESTINATION"
+}
+
+# calling the function
+print_info
