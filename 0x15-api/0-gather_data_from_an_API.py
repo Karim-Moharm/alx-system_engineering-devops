@@ -10,14 +10,13 @@ def main(av):
         'https://jsonplaceholder.typicode.com/users/{}'
         .format(av[1]))
     json_resp = user_resp.json()
-    employee_name = json_resp["name"]
+    employee_name = json_resp.get('name')
     todos_resp = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}/todos'
+        'https://jsonplaceholder.typicode.com/todos?userId={}'
         .format(av[1])
     )
     done_tasks = 0
     total_tasks = 0
-    done_tasks_title = None
     for item in todos_resp.json():
         total_tasks += 1
         if item["completed"] is True:
