@@ -17,6 +17,7 @@ def main(av):
     )
     done_tasks = 0
     total_tasks = 0
+    done_tasks_title = None
     for item in todos_resp.json():
         total_tasks += 1
         if item["completed"] is True:
@@ -27,6 +28,10 @@ def main(av):
         done_tasks,
         total_tasks
     ))
+
+    for item in todos_resp.json():
+        if item["completed"] is True:
+            print('\t {}'.format(item["title"]))
 
 
 if __name__ == '__main__':
