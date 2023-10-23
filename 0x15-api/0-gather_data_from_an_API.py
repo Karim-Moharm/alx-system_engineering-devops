@@ -20,7 +20,7 @@ def main(av):
     total_tasks = 0
     for item in todos_resp.json():
         total_tasks += 1
-        if item["completed"] == True:
+        if item["completed"] is True:
             done_tasks += 1
 
     print('Employee {} is done with tasks({}/{}):'.format(
