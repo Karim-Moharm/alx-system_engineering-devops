@@ -3,16 +3,19 @@
 returns information about his/her TODO list progress.
 """
 import requests
+import sys
 
 
 def main(av):
+    """main function of script
+    """
     user_resp = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}'
         .format(av[1]))
     json_resp = user_resp.json()
-    employee_name = json_resp.get('name')
+    employee_name = json_resp["name"]
     todos_resp = requests.get(
-        'https://jsonplaceholder.typicode.com/todos?userId={}'
+        'https://jsonplaceholder.typicode.com/users/{}/todos'
         .format(av[1])
     )
     done_tasks = 0
@@ -34,5 +37,4 @@ def main(av):
 
 
 if __name__ == '__main__':
-    import sys
     main(sys.argv)
