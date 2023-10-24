@@ -46,6 +46,4 @@ if __name__ == '__main__':
 
     with open("{}.json".format(argv[1]), mode='w',
               encoding='utf-8') as fp:
-        json_format = json.dumps(output_dict)
-
-    print(json_format)
+        json.dump(output_dict, fp)
