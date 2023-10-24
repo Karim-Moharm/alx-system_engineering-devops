@@ -10,8 +10,9 @@ if __name__ == '__main__':
                         format(argv[1]))
     user_name = resp.json().get('name')
 
-    todos_resp = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.
-                              format(argv[1]))
+    todos_resp = requests.get(
+        'https://jsonplaceholder.typicode.com/todos?userId={}'.
+        format(argv[1]))
     todos_data = todos_resp.json()
 
     done_tasks = 0
