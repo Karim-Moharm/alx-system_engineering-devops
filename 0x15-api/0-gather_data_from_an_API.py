@@ -10,13 +10,11 @@ def main(av):
     """main function of script
     """
     user_resp = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}'
-        .format(av[1]))
+        'https://jsonplaceholder.typicode.com/users/{}'.format(av[1]))
     json_resp = user_resp.json()
     employee_name = json_resp.get('name')
     todos_resp = requests.get(
-        'https://jsonplaceholder.typicode.com/todos?userId={}'
-        .format(av[1])
+        'https://jsonplaceholder.typicode.com/todos?userId={}'.format(av[1])
     )
     done_tasks = 0
     total_tasks = 0
