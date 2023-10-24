@@ -22,8 +22,8 @@ if __name__ == '__main__':
 
         for item in todos_data:
             csv_data.writerow([
-                str(argv[1]),
-                str(user_name),
-                str(item.get('completed')),
-                str(item.get('title'))
+                argv[1],
+                user_name,
+                item.get('completed'),
+                item.get('title')
             ])
