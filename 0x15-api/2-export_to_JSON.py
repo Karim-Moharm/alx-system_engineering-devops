@@ -11,7 +11,7 @@ if __name__ == '__main__':
         format(argv[1]))
 
     user_name = resp.json().get('username')
-    print(user_name)
+    # print(user_name)
 
     todos_resp = requests.get(
         'https://jsonplaceholder.typicode.com/todos?userId={}'.
@@ -42,4 +42,10 @@ if __name__ == '__main__':
         user_data_lst.append(user_data_dict)
     # print(user_data_lst)
     output_dict = {"{}".format(argv[1]): user_data_lst}
-    print(output_dict)
+    # print(output_dict)
+
+    with open("{}.json".format(argv[1]), mode='w',
+              encoding='utf-8') as fp:
+        json_format = json.dumps(output_dict)
+
+    print(json_format)
