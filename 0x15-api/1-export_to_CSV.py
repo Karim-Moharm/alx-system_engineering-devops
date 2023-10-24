@@ -18,12 +18,12 @@ if __name__ == '__main__':
 
     with open('{}.csv'.format(argv[1]), mode='w',
               encoding='UTF8', newline='') as fp:
-        csv_data = csv.writer(fp)
+        csv_data = csv.writer(fp, quoting=csv.QUOTE_ALL)
 
         for item in todos_data:
             csv_data.writerow([
-                f'"{argv[1]}"',
-                f'"{user_name}"',
-                f'"{item.get("completed")}"',
-                f'"{item.get("title")}"'
+                str(argv[1]),
+                str(user_name),
+                str(item.get('completed')),
+                str(item.get('title'))
             ])
