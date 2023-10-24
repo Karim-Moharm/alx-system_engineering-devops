@@ -9,7 +9,7 @@ if __name__ == '__main__':
     resp = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}'.
         format(argv[1]))
-    user_name = resp.json().get('name')
+    user_name = resp.json().get('username')
 
     todos_resp = requests.get(
         'https://jsonplaceholder.typicode.com/todos?userId={}'.
@@ -17,7 +17,7 @@ if __name__ == '__main__':
     todos_data = todos_resp.json()
 
     with open('{}.csv'.format(argv[1]), mode='w',
-              encoding='UTF8', newline='') as fp:
+              encoding='UTF8') as fp:
         csv_data = csv.writer(fp, quoting=csv.QUOTE_ALL)
 
         for item in todos_data:
