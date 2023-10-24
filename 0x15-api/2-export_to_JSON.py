@@ -20,14 +20,13 @@ if __name__ == '__main__':
     # print(todos_data)
 
     """ DISPLAY ON THAT FORMAT
-    { "USER_ID": [{"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"},
-                {"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"},
+    { "USER_ID": [{"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS,
+                    "username": "USERNAME"},
+                {"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS,
+                    "username": "USERNAME"},
                 ... ]}
-    
-        TASK_TITLE => todos?userId/<id>
-        TASK_COMPLETED_STATUS => todos?userId/<id>
-        USERNAME => users
     """
+
     user_data_lst = []
     user_data_dict = {}
 
