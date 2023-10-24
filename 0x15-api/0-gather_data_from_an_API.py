@@ -13,7 +13,7 @@ def main(av):
         'https://jsonplaceholder.typicode.com/users/{}'
         .format(av[1]))
     json_resp = user_resp.json()
-    employee_name = json_resp["name"]
+    employee_name = json_resp.get('name')
     todos_resp = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}/todos'
         .format(av[1])
@@ -22,7 +22,7 @@ def main(av):
     total_tasks = 0
     for item in todos_resp.json():
         total_tasks += 1
-        if item["completed"] is True:
+        if item.get('completed') is True:
             done_tasks += 1
 
     print('Employee {} is done with tasks({}/{}):'.format(
@@ -32,8 +32,8 @@ def main(av):
     ))
 
     for item in todos_resp.json():
-        if item["completed"] is True:
-            print('\t {}'.format(item["title"]))
+        if item.get('completed') is True:
+            print('\t {}'.format(item.get('title')))
 
 
 if __name__ == '__main__':
