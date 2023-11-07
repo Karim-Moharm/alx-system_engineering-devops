@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# script should run the whoami command under the user passed as an argument
+
+checkUser() {
+    users=$(awk -F':' '{print $1}' /etc/passwd)
+    target_user="$1"
+
+    for user in $users; do
+	if [ "$user" == "$target_user" ]; then
+	    return 0
+	fi
+    done
+    return 1
+}    
+
+
+if [ "$#" -eq 0 ]; then
+    whoami
+user_exist=$(checkUser "$1")
+elif [ $user_exist -eq 1 ]; then
+    sudo useradd "$1"
+    su "$1" 
+    whoami
+else
+    su "$1"
+    whoami
+fi
