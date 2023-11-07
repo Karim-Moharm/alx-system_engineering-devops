@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# fix nginx config file permission and user
+
+chmod 644 /etc/nginx/nginx.conf
+sudo -u nginx service nginx start
