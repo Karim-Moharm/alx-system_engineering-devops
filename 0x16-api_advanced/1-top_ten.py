@@ -14,19 +14,18 @@ def top_ten(subreddit):
     }
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
     resp = requests.get(url, headers=headers)
-    lst_of_data = (resp.json().get('data').get('children'))
+    if resp.status_code >= 300:
+        print('None')
+    else:
+        lst_of_data = (resp.json().get('data').get('children'))
 
-    all_titles = []
-    for i in lst_of_data:
-        all_titles.append(i.get('data').get('title'))
+        all_titles = []
+        for i in lst_of_data:
+            all_titles.append(i.get('data').get('title'))
 
-    count = 0
-    for title in all_titles:
-        print(title)
-        count += 1
-        if count == 10:
-            break
-
-
-# if __name__ == '__main__':
-#     top_ten('programming')
+        count = 0
+        for title in all_titles:
+            print(title)
+            count += 1
+            if count == 10:
+                break
