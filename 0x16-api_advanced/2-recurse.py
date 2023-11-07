@@ -17,22 +17,21 @@ def recurse(subreddit, hot_list=[], after=None):
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
     resp = requests.get(url, headers=headers, params=params)
     # print(resp.status_code)
-    if resp.status_code != 200:
-        return 'None'
-    else:
+    if resp.status_code == 200:
         data = resp.json()
         lst_of_data = data['data']['children']
 
-    for i in lst_of_data:
-        hot_list.append(i.get('data').get('title'))
+        for i in lst_of_data:
+            hot_list.append(i.get('data').get('title'))
 
-    after = data.get('data').get('after')
-    # print(after)
-    if after:
-        return recurse(subreddit, hot_list, after)
+        after = data.get('data').get('after')
+        # print(after)
+        if after:
+            return recurse(subreddit, hot_list, after)
+        else:
+            return hot_list
     else:
-        return hot_list
-
+        return 'None'
 
 # if __name__ == '__main__':
 #     recurse('programming')
