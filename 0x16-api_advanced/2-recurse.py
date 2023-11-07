@@ -18,7 +18,7 @@ def recurse(subreddit, hot_list=[], after=None):
     resp = requests.get(url, headers=headers, params=params)
     # print(resp.status_code)
     if resp.status_code != 200:
-        print('None')
+        return 'None'
     else:
         data = resp.json()
         lst_of_data = data['data']['children']
