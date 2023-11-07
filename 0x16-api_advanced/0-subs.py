@@ -3,18 +3,18 @@
 """
 import requests
 
-user_agent = 'MyAPI/0.0.1 (by /u/karim-moharm)'
 
-headers = {
-    'User-Agent': user_agent,
-}
-response = requests.get(
-    "https://www.reddit.com/r/programming/about.json", headers=headers)
-print(response.json()["data"]["subscribers"])
-# print(len(response.json()))
+def number_of_subscribers(subreddit):
+    """return number of subscribers for subreddit
+    """
+    user_agent = 'MyAPI/0.0.1 (by /u/karim-moharm)'
+    headers = {
+        'User-Agent': user_agent,
+    }
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
 
-# keys = []
-# for key in response.json().values():
-#     keys.append(key)
-
-# print(len(keys))
+    response = requests.get(url, headers=headers)
+    if response.status_code != 200:
+        return 0
+    nums_of_subs = response.json().get('data').get('subscribers')
+    return nums_of_subs
