@@ -15,7 +15,8 @@ def recurse(subreddit, hot_list=[], after=None):
     # using after parameter to handle pagination
     params = {'after': after}
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
-    resp = requests.get(url, headers=headers, params=params)
+    resp = requests.get(url, headers=headers, params=params,
+                        allow_redirects=False)
     # print(resp.status_code)
     if resp.status_code == 200:
         data = resp.json().get('data')
@@ -31,4 +32,4 @@ def recurse(subreddit, hot_list=[], after=None):
         else:
             return hot_list
     else:
-        return 'None'
+        return None
