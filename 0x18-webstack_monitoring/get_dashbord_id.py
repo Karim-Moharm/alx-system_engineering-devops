@@ -1,7 +1,11 @@
+#!/usr/bin/python3
+"""script used to get the list of all dashboard for datadog
+dashboard
+"""
 import requests
 
-DATADOG_API_KEY = '****'
-DATADOG_APP_KEY = '****'
+DATADOG_API_KEY = 'put the api key here'
+DATADOG_APP_KEY = 'put the app key here'
 
 DASHBOARD_NAME = 'web-01 Dashboard'
 
