@@ -23,6 +23,7 @@ if response.status_code == 200:
     dashboard_data = response.json()
     # print(dashboard_data.get('dashboards'))
 
+    # if you want to retrieve the id
     for dashboard in dashboard_data.get('dashboards'):
         print(dashboard.get('id'))
 
