@@ -9,6 +9,7 @@ server {
         proxy_pass http://localhost:5000/airbnb-onepage/;
     }
 
+    # using regex to handle a dynamic route
     locarion ~ ^/airbnb-dynamic/number_odd_or_even/(\d+)$ {
         proxy_pass http://localhost:5001/number_odd_or_even/$1;
     }
