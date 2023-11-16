@@ -2,8 +2,8 @@ server {
     listen 80 default_server;
     listen [::]:90 default_server;
     server_name karimmoharm.tech www.karimmoharm.tech;
-    # root /var/www/html;
-    index index.html 
+    root /var/www/html;
+    index index.html;
 
     location /airbnb-onepage/ {
         proxy_pass http://localhost:5000/airbnb-onepage/;
@@ -12,6 +12,10 @@ server {
     # using regex to handle a dynamic route
     locarion ~ ^/airbnb-dynamic/number_odd_or_even/(\d+)$ {
         proxy_pass http://localhost:5001/number_odd_or_even/$1;
+    }
+
+    location /api/ {
+        proxy_pass http://localhost:5002/api;
     }
 
     # my custom error page
