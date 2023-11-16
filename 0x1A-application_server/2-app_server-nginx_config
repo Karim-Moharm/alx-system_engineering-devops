@@ -6,7 +6,7 @@ server {
     index index.html 
 
     location /airbnb-onepage/ {
-        proxy_pass http://0.0.0.0:5000/airbnb-onepage;
+        proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
     }
 
     # my custom error page
