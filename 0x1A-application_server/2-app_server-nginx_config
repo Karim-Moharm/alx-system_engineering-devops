@@ -1,0 +1,18 @@
+server {
+    listen 80 default_server;
+    listen [::]:90 default_server;
+    server_name _;
+    # root /var/www/html;
+    index index.html 
+
+    location /airbnb-onepage/ {
+        proxy_pass http://0.0.0.0:5000/airbnb-onepage;
+    }
+
+    # my custom error page
+    error_page 404 /my_err404.html;
+    location = /my_err404.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+}
