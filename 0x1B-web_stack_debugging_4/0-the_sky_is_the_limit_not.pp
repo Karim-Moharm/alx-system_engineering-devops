@@ -2,5 +2,5 @@
 
 exec { 'change number of limits for ULIMIT variable'
   provider => 'shell',
-  command => 'sed -i "s/15/5000/" /etc/default/nginx'
+  command => 'sudo sed -i "s/15/5000/" /etc/default/nginx'
 }
